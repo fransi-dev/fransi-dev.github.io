@@ -166,7 +166,7 @@
             transform: scale(1.05);
         }
 
-        /* --- NUEVA SECCIÓN DE ANIMACIÓN --- */
+        /* --- SECCIÓN DE ANIMACIÓN --- */
         .animacion-container {
             width: 100%;
             height: 80px;
@@ -175,7 +175,7 @@
             border-radius: 10px 10px 0 0;
             overflow: hidden;
             border-bottom: 3px dashed var(--amarillo);
-            margin-bottom: -10px; /* Conecta visualmente con el formulario */
+            margin-bottom: -10px;
             z-index: 1;
         }
 
@@ -189,7 +189,6 @@
             animation: correrPantalla 6s linear infinite;
         }
 
-        /* Si el usuario pasa el mouse, la persecución se vuelve más rápida */
         .animacion-container:hover .pista-carrera {
             animation-duration: 3s;
         }
@@ -211,7 +210,6 @@
             animation: tambaleoPollito 0.3s linear infinite alternate;
         }
 
-        /* Animaciones CSS */
         @keyframes correrPantalla {
             0% { transform: translateX(0%); }
             100% { transform: translateX(35%); }
@@ -226,12 +224,11 @@
             0% { transform: scaleY(1) translateX(0); }
             100% { transform: scaleY(0.85) translateX(5px); }
         }
-        /* ---------------------------------- */
 
         .contacto-section {
             background: var(--blanco);
             padding: 40px;
-            border-radius: 0 0 10px 10px; /* Ajustado para encajar con la animación */
+            border-radius: 0 0 10px 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
@@ -354,7 +351,7 @@
             </a>
         </section>
 
-        <!-- Contenedor del efecto visual (Pollito y Huevo) -->
+        <!-- Contenedor del efecto visual -->
         <div class="animacion-container">
             <div class="pista-carrera">
                 <span class="elemento-animado pollito">🐥</span>
@@ -365,3 +362,24 @@
         <!-- Sección de Formulario de Contacto -->
         <section class="contacto-section">
             <h2>Escríbenos</h2>
+            <p>Déjanos tus datos si deseas cotizaciones exclusivas para tu negocio o consultas generales.</p>
+            
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre o Empresa:</label>
+                    Celular / Teléfono de contacto:
+                    Tipo de cliente:
+                    Selecciona una opción
+                    Para mi hogar (Menor)
+                    Para mi negocio (Mayorista)
+                    Mensaje o Pedido:
+                    Enviar a mi WhatsApp
+                    🔥 Avícola Fransi — Frescura que nutre cada díadocument.getElementById('whatsappForm').addEventListener('submit', function(event) {event.preventDefault();
+                    const telefonoDestino = "51907649974";
+                    const nombre = document.getElementById('nombre').value;
+                    const telefonoContacto = document.getElementById('telefono').value;
+                    const tipoCliente = document.getElementById('tipo').value;
+                    const mensaje = document.getElementById('mensaje').value;
+                    const textoMensaje = ¡Hola Avícola Fransi! 🥚%0A +He llenado el formulario de la página web:%0A%0A +👤 *Nombre/Empresa:* ${nombre}%0A +📞 *Teléfono:* ${telefonoContacto}%0A +🏢 *Tipo de Cliente:* ${tipoCliente}%0A +✉️ *Mensaje:* ${mensaje};
+                    const urlWhatsApp = https://whatsapp.com{telefonoDestino}&text=${textoMensaje};
+                    window.open(urlWhatsApp, '_blank');});
