@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avícola Fransi | Frescura que nutre</title>
+    <style>
+        :root {
+            --amarillo: #FFCC00;
+            --rojo: #CC0000;
+            --negro: #111111;
+            --blanco: #FFFFFF;
+            --gris-claro: #F9F9F9;
+            --gris-borde: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-claro);
+            color: var(--negro);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--negro);
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 5px solid var(--amarillo);
+        }
+
+        .logo-container img {
+            max-width: 280px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--amarillo);
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .precios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--blanco);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            text-align: center;
+            border-top: 5px solid var(--amarillo);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card.extra {
+            border-top: 5px solid var(--rojo);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--negro);
+            margin-bottom: 10px;
+        }
+
+        .unidad {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .beneficios {
+            background: var(--negro);
+            color: var(--blanco);
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .beneficios h2 {
+            text-align: center;
+            color: var(--amarillo);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .beneficios-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .beneficios-list li {
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 15px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+            transform: scale(1.05);
+        }
+
+        /* --- NUEVA SECCIÓN DE ANIMACIÓN --- */
+        .animacion-container {
+            width: 100%;
+            height: 80px;
+            position: relative;
+            background: #f0f0f0;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            border-bottom: 3px dashed var(--amarillo);
+            margin-bottom: -10px; /* Conecta visualmente con el formulario */
+            z-index: 1;
+        }
+
+        .pista-carrera {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 10px;
+            animation: correrPantalla 6s linear infinite;
+        }
+
+        /* Si el usuario pasa el mouse, la persecución se vuelve más rápida */
+        .animacion-container:hover .pista-carrera {
+            animation-duration: 3s;
+        }
+
+        .elemento-animado {
+            font-size: 2.2rem;
+            position: absolute;
+            bottom: 5px;
+        }
+
+        .huevito {
+            left: 45%;
+            animation: saltarHuevito 0.6s ease-in-out infinite alternate;
+        }
+
+        .pollito {
+            left: 20%;
+            font-size: 2.5rem;
+            animation: tambaleoPollito 0.3s linear infinite alternate;
+        }
+
+        /* Animaciones CSS */
+        @keyframes correrPantalla {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(35%); }
+        }
+
+        @keyframes saltarHuevito {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(15deg); }
+        }
+
+        @keyframes tambaleoPollito {
+            0% { transform: scaleY(1) translateX(0); }
+            100% { transform: scaleY(0.85) translateX(5px); }
+        }
+        /* ---------------------------------- */
+
+        .contacto-section {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 0 0 10px 10px; /* Ajustado para encajar con la animación */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .contacto-section h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .contacto-section p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, 
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gris-borde);
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--negro);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--amarillo);
+        }
+
+        .btn-enviar {
+            width: 100%;
+            background-color: var(--rojo);
+            color: var(--blanco);
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-enviar:hover {
+            background-color: #aa0000;
+        }
+
+        footer {
+            background-color: var(--negro);
+            color: #888;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-size: 1rem;
+            border-top: 4px solid var(--amarillo);
+        }
+
+        footer p {
+            color: var(--amarillo);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Avícola Fransi Logo">
+        </div>
+        <p>FRESCURA QUE NUTRE</p>
+    </header>
+
+    <div class="container">
+        
+        <p class="intro">¡Huevos frescos y de excelente calidad! ❤️</p>
+
+        <section class="precios-grid">
+            <div class="card">
+                <h3>Huevos Grandes</h3>
+                <div class="precio">S/ 12.50</div>
+                <div class="unidad">la bandeja</div>
+            </div>
+            
+            <div class="card extra">
+                <h3>Huevos Extragrandes</h3>
+                <div class="precio">S/ 13.00</div>
+                <div class="unidad">la bandeja</div>
+            </div>
+        </section>
+
+        <section class="beneficios">
+            <h2>¿Por qué elegirnos?</h2>
+            <ul class="beneficios-list">
+                <li>📦 Venta por mayor y menor</li>
+                <li>✅ Frescos y de calidad</li>
+                <li>✅ Para hogares y negocios</li>
+            </ul>
+        </section>
+
+        <section class="cta-section">
+            <h2>¿Listo para hacer tu pedido?</h2>
+            <p>Atención rápida y calidad garantizada en cada entrega.</p>
+            <a href="https://wa.me" class="btn-whatsapp" target="_blank">
+                📲 Pedir por WhatsApp: 907 649 974
+            </a>
+        </section>
+
+        <!-- Contenedor del efecto visual (Pollito y Huevo) -->
+        <div class="animacion-container">
+            <div class="pista-carrera">
+                <span class="elemento-animado pollito">🐥</span>
+                <span class="elemento-animado huevito">🥚</span>
+            </div>
+        </div>
+
+        <!-- Sección de Formulario de Contacto -->
+        <section class="contacto-section">
+            <h2>Escríbenos</h2>
